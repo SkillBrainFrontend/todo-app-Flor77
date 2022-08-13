@@ -3,9 +3,26 @@ import "./TodoItem.css";
 import Checkbox from "../checkbox/CheckBox";
 
 const TodoItem = (props) => {
-  const handleCheckboxChange = (value) => {
-    console.log(value);
+
+  const handleCheckboxChange = () => {
+    const matchId = props.id
+    props.completeTodo(matchId)
   };
+
+  const handleDeleteChange = () => {
+    const matchId = props.id
+    props.removeTodo(matchId)
+  }; 
+
+  const handleEditId = () => {
+    const matchId = props.id
+    console.log("id"+ " "+ props.id)
+    // console.log(matchIdCheckBox)
+    props.onEdit(matchId)
+    // props.onCreateClick()
+  };
+
+  
 
   return (
     <div className={`todo-item ${props.completed && "todo-completed"}`}>
@@ -16,20 +33,17 @@ const TodoItem = (props) => {
             onChange={handleCheckboxChange}
           />
 
-          <h4>Assignment 1</h4>
+          <h4>{props.title}</h4>
+          
         </div>
         <div>
-          <i className="fa fa-pencil" aria-hidden="true"></i>
-          <i className="fa fa-trash" aria-hidden="true"></i>
+          <i  onClick={handleEditId} className="fa fa-pencil" aria-hidden="true"></i>
+          <i onClick={handleDeleteChange} className="fa fa-trash" aria-hidden="true"></i>
         </div>
       </div>
 
       <div className="separator"></div>
-
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. At id illo
-        repellendus non maiores in pariatur aliquam iure fugit amet!
-      </p>
+      <p>{props.description}</p>
     </div>
   );
 };
