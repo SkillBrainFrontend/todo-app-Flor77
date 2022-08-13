@@ -83,9 +83,6 @@ function App() {
     setIsOpen(true);
   };
   
- 
-
-
 
   const openModal = () => {
     setIsOpen(true)
@@ -159,7 +156,7 @@ function App() {
           <EditTodoForm
           onCreateClick={openModal}
           initialValues={editMode}
-          newEditCard={onEdit}
+          addNewEdit={editTodo}
           />
         ) : (
           <AddTodoForm addNewTask={handleAddTodo}/>

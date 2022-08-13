@@ -20,20 +20,14 @@ function EditTodoForm(props) {
 
   const handleEdit = (e) => {
     e.preventDefault();
-    // const id = props.matchId
     const newEditCard = {
       title: taskTitle,
       description: taskDescription,
     };
-
-
-    // props.editTodo(newEditCard)
-    // setTaskTitle("");
-    // setTaskDescription("");
-
-    // props.onCreateClick()
-    // props.handleEditId()
-    // props.editTodo()
+    
+    props.addNewEdit(newEditCard)
+    setTaskTitle("");
+    setTaskDescription("");
   };
   
   return( <Card>
