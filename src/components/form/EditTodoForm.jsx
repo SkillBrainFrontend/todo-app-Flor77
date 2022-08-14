@@ -7,8 +7,8 @@ import TextArea from "../input/TextArea";
 import Button from "../button/Button";
 
 function EditTodoForm(props) {
-  const [taskTitle, setTaskTitle] = useState("");
-  const [taskDescription, setTaskDescription] = useState("");
+  const [taskTitle, setTaskTitle] = useState(props.initialValues.title);
+  const [taskDescription, setTaskDescription] = useState(props.initialValues.description);
 
   const handleTitleChange = (e) => {
     setTaskTitle(e.target.value);
@@ -21,8 +21,10 @@ function EditTodoForm(props) {
   const handleEdit = (e) => {
     e.preventDefault();
     const newEditCard = {
+      id: props.initialValues.id,
       title: taskTitle,
       description: taskDescription,
+      completed: props.initialValues.completed
     };
     
     props.addNewEdit(newEditCard)

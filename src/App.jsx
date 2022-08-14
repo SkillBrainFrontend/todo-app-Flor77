@@ -63,8 +63,6 @@ function App() {
       )
   };
 
-  
-
   const editTodo = (newEditCard) => {
     setTodos((prevState) => prevState.map((item) => {
       if (item.id === newEditCard.id) {
@@ -73,16 +71,14 @@ function App() {
       return item;
     })
     );
-    closeModal();
+    setIsOpen(false);
   };
 
   const onEdit = (matchId) => {
-    console.log(matchId)
     const todoToEdit = todos.find((item) => item.id === matchId);
     setEditMode(todoToEdit);
     setIsOpen(true);
   };
-  
 
   const openModal = () => {
     setIsOpen(true)
@@ -95,13 +91,6 @@ function App() {
   return (
     <div className="App">
       <div className="app-container">
-        {/* 
-            This is your Create Card component.
-          */}
-       {/* <AddTodoForm addNewTask={handleAddTodo}/> */}
-        {/* 
-          My Todos
-        */}
         <Card>
           <h1>My todos</h1>
           <Button onClick={openModal}>Add +</Button>
@@ -122,8 +111,6 @@ function App() {
               onEdit={onEdit}
               />
              ))}
-            {/* <TodoItem todos={todos} completed={false} /> */}
-            {/* <TodoItem todos={todos} completed={false} /> */}
           </div>
 
           <div className="separator"></div>
@@ -146,8 +133,6 @@ function App() {
               onEdit={onEdit}
               />
              ))}
-            {/* <TodoItem todos={todos} completed={true} /> */}
-            {/* <TodoItem todos={todos} completed={true} /> */}
           </div>
         </Card>
       </div>

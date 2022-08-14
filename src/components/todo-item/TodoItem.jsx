@@ -16,10 +16,7 @@ const TodoItem = (props) => {
 
   const handleEditId = () => {
     const matchId = props.id
-    console.log("id"+ " "+ props.id)
-    // console.log(matchIdCheckBox)
     props.onEdit(matchId)
-    // props.onCreateClick()
   };
 
   
