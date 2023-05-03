@@ -1,8 +1,6 @@
 import React, { useState } from "react";
-import "./AddTodoForm.css";
 import Card from "../card/Card";
 import Input from "../input/Input";
-import TodoItem from "../todo-item/TodoItem";
 import TextArea from "../input/TextArea";
 import Button from "../button/Button";
 
