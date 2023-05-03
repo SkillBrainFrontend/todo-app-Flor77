@@ -39,37 +39,38 @@ const TODOS_MOCK = [
 ];
 
 function App() {
-  
   const [todos, setTodos] = useState(TODOS_MOCK);
   const [isOpen, setIsOpen] = useState(false);
   const [editMode, setEditMode] = useState(null);
-  
-  const handleAddTodo = (newTaskCard) => {
-    setTodos((prevState) => [...prevState, newTaskCard])
-    setIsOpen(false);
-  }
 
-  const removeTodo =(matchId) => {
-    setTodos(prevState =>prevState.filter((item)=>item.id !== matchId))
-  }
+  const handleAddTodo = (newTaskCard) => {
+    setTodos((prevState) => [...prevState, newTaskCard]);
+    setIsOpen(false);
+  };
+
+  const removeTodo = (matchId) => {
+    setTodos((prevState) => prevState.filter((item) => item.id !== matchId));
+  };
 
   const completeTodo = (matchId) => {
-      setTodos(prevState => prevState.map((item) => {
-        if(item.id === matchId){
-          return {...item, completed: !item.completed}
+    setTodos((prevState) =>
+      prevState.map((item) => {
+        if (item.id === matchId) {
+          return { ...item, completed: !item.completed };
         }
         return item;
       })
-      )
+    );
   };
 
-  const editTodo = (newEditCard) => {
-    setTodos((prevState) => prevState.map((item) => {
-      if (item.id === newEditCard.id) {
-        return newEditCard;
-      }
-      return item;
-    })
+  const editTodo = (taskTitle, taskDescription, matchId) => {
+    setTodos((prevState) =>
+      prevState.map((item) => {
+        if (item.id === matchId) {
+          return { ...item, title: taskTitle, description: taskDescription };
+        }
+        return item;
+      })
     );
     setIsOpen(false);
   };
@@ -81,12 +82,12 @@ function App() {
   };
 
   const openModal = () => {
-    setIsOpen(true)
-  }
+    setIsOpen(true);
+  };
   const closeModal = () => {
     setIsOpen(false);
     setEditMode(null);
-  }
+  };
 
   return (
     <div className="App">
@@ -96,57 +97,56 @@ function App() {
           <Button onClick={openModal}>Add +</Button>
           <div className="list-container">
             {todos
-            .filter((item)=> item.completed === false)
-            .map((item, index) => (
-              <TodoItem 
-              openModal={openModal}
-              removeTodo={removeTodo} 
-              completeTodo={completeTodo}
-              key={index}
-              id={item.id}
-              title={item.title}
-              description={item.description}
-              completed={item.completed}
-              editTodo={editTodo}
-              onEdit={onEdit}
-              />
-             ))}
+              .filter((item) => item.completed === false)
+              .map((item) => (
+                <TodoItem
+                  openModal={openModal}
+                  removeTodo={removeTodo}
+                  completeTodo={completeTodo}
+                  key={item.id}
+                  id={item.id}
+                  title={item.title}
+                  description={item.description}
+                  completed={item.completed}
+                  editTodo={editTodo}
+                  onEdit={onEdit}
+                />
+              ))}
           </div>
 
           <div className="separator"></div>
 
           <h2>Completed</h2>
           <div className="list-container">
-          {todos
-          .filter((item)=> item.completed === true)
-          .map((item, index) => (
-              <TodoItem 
-              openModal={openModal}
-              removeTodo={removeTodo} 
-              completeTodo={completeTodo}  
-              key={index}
-              id={item.id}
-              title={item.title}
-              description={item.description}
-              completed={item.completed}
-              editTodo={editTodo}
-              onEdit={onEdit}
-              />
-             ))}
+            {todos
+              .filter((item) => item.completed === true)
+              .map((item) => (
+                <TodoItem
+                  openModal={openModal}
+                  removeTodo={removeTodo}
+                  completeTodo={completeTodo}
+                  key={item.id}
+                  id={item.id}
+                  title={item.title}
+                  description={item.description}
+                  completed={item.completed}
+                  editTodo={editTodo}
+                  onEdit={onEdit}
+                />
+              ))}
           </div>
         </Card>
       </div>
       <Modal onClose={closeModal} isOpen={isOpen}>
         {editMode ? (
           <EditTodoForm
-          onCreateClick={openModal}
-          initialValues={editMode}
-          addNewEdit={editTodo}
+            onCreateClick={openModal}
+            initialValues={editMode}
+            addNewEdit={editTodo}
           />
         ) : (
-          <AddTodoForm addNewTask={handleAddTodo}/>
-        )
-        }
+          <AddTodoForm addNewTask={handleAddTodo} />
+        )}
       </Modal>
     </div>
   );
