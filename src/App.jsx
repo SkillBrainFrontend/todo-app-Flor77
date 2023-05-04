@@ -114,25 +114,6 @@ function App() {
 
           <div className="separator"></div>
 
-          {/* <h2>Completed</h2>
-          <div className="list-container">
-            {todos
-              .filter((item) => item.completed === true)
-              .map((item, index) => (
-                <TodoItem
-                  openModal={openModal}
-                  removeTodo={removeTodo}
-                  completeTodo={completeTodo}
-                  key={index}
-                  id={item.id}
-                  title={item.title}
-                  description={item.description}
-                  completed={item.completed}
-                  editTodo={editTodo}
-                  onEdit={onEdit}
-                />
-              ))}
-          </div> */}
           <p>{`You have ${todos.length} todos`}</p>
         </Card>
       </div>
