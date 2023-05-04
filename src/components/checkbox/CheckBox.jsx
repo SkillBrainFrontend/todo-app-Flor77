@@ -11,15 +11,15 @@ const Checkbox = ({ checked, onChange }) => {
 
   useEffect(() => {
     if (onChange) {
-      onChange(checked);
+      onChange(check);
     }
   }, [check]);
 
   return (
     <div className="round">
       <input
-        value={checked}
-        checked={checked}
+        value={check}
+        checked={check}
         onChange={handleCheckboxChange}
         type="checkbox"
       />
