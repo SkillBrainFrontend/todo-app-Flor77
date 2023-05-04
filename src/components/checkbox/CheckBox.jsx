@@ -18,7 +18,7 @@ const Checkbox = (props) => {
   return (
     <div className="round">
       <input
-        value={checked}
+        value={props.checked}
         checked={checked}
         onChange={handleCheckboxChange}
         type="checkbox"
