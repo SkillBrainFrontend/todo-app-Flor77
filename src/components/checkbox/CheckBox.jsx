@@ -19,12 +19,12 @@ const Checkbox = (props) => {
     <div className="round">
       <input
         value={props.checked}
-        checked={checked}
+        checked={props.checked}
         onChange={handleCheckboxChange}
         type="checkbox"
       />
       <label
-        className={`checkbox ${checked ? "checkbox--active" : ""}`}
+        className={`checkbox ${props.checked ? "checkbox--active" : ""}`}
         htmlFor="checkbox"
       ></label>
     </div>
