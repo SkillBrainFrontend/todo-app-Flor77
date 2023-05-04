@@ -94,22 +94,20 @@ function App() {
           <h1>My todos</h1>
           <Button onClick={openModal}>Add +</Button>
           <div className="list-container">
-            {todos
-              // .filter((item) => item.completed === false)
-              .map((item, index) => (
-                <TodoItem
-                  openModal={openModal}
-                  removeTodo={removeTodo}
-                  completeTodo={completeTodo}
-                  key={index}
-                  id={item.id}
-                  title={item.title}
-                  description={item.description}
-                  completed={item.completed}
-                  editTodo={editTodo}
-                  onEdit={onEdit}
-                />
-              ))}
+            {todos.map((item, index) => (
+              <TodoItem
+                openModal={openModal}
+                removeTodo={removeTodo}
+                completeTodo={completeTodo}
+                key={index}
+                id={item.id}
+                title={item.title}
+                description={item.description}
+                completed={item.completed}
+                editTodo={editTodo}
+                onEdit={onEdit}
+              />
+            ))}
           </div>
 
           <div className="separator"></div>
