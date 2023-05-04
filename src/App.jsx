@@ -98,12 +98,12 @@ function App() {
           <div className="list-container">
             {todos
               .filter((item) => item.completed === false)
-              .map((item) => (
+              .map((item, index) => (
                 <TodoItem
                   openModal={openModal}
                   removeTodo={removeTodo}
                   completeTodo={completeTodo}
-                  key={item.id}
+                  key={index}
                   id={item.id}
                   title={item.title}
                   description={item.description}
@@ -117,15 +117,15 @@ function App() {
           <div className="separator"></div>
 
           <h2>Completed</h2>
-          <div className="list-container">
+          {/* <div className="list-container">
             {todos
               .filter((item) => item.completed === true)
-              .map((item) => (
+              .map((item, index) => (
                 <TodoItem
                   openModal={openModal}
                   removeTodo={removeTodo}
                   completeTodo={completeTodo}
-                  key={item.id}
+                  key={index}
                   id={item.id}
                   title={item.title}
                   description={item.description}
@@ -134,7 +134,7 @@ function App() {
                   onEdit={onEdit}
                 />
               ))}
-          </div>
+          </div> */}
         </Card>
       </div>
       <Modal onClose={closeModal} isOpen={isOpen}>
