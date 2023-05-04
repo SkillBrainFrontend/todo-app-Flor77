@@ -1,8 +1,6 @@
 import React from "react";
 import Card from "./components/card/Card";
-import Input from "./components/input/Input";
 import TodoItem from "./components/todo-item/TodoItem";
-import TextArea from "./components/input/TextArea";
 import Button from "./components/button/Button";
 import AddTodoForm from "./components/form/AddTodoForm";
 import Modal from "./components/modal/Modal";
@@ -97,7 +95,7 @@ function App() {
           <Button onClick={openModal}>Add +</Button>
           <div className="list-container">
             {todos
-              .filter((item) => item.completed === false)
+              // .filter((item) => item.completed === false)
               .map((item, index) => (
                 <TodoItem
                   openModal={openModal}
@@ -116,8 +114,8 @@ function App() {
 
           <div className="separator"></div>
 
-          <h2>Completed</h2>
-          {/* <div className="list-container">
+          {/* <h2>Completed</h2>
+          <div className="list-container">
             {todos
               .filter((item) => item.completed === true)
               .map((item, index) => (
@@ -135,6 +133,7 @@ function App() {
                 />
               ))}
           </div> */}
+          <p>{`You have ${todos.length} todos`}</p>
         </Card>
       </div>
       <Modal onClose={closeModal} isOpen={isOpen}>
